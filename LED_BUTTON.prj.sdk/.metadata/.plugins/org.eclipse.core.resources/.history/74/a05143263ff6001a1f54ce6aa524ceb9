@@ -148,22 +148,25 @@ int LEDOutputExample(void)
 
 					case SET:
 						led = 0b1111;
-					break; /* case SET */
+					break;
 
 					case COUNT2:
 						inc = 2;
 						state = COUNT_AFTER_SUSPEND;
-					break; /* case COUNT2 */
+					break;
 
 					case COUNT4:
 						inc = 4;
 						state = COUNT_AFTER_SUSPEND;
-					break; /* case COUNT4 */
+					break;
 
 					case COUNT_AFTER_SUSPEND:
-						/* suspend if both buttons pressed again */
-						if (btn == 0b1001) {
-							state = SUSPEND;
+						switch (btn) {
+							/* suspend if button 0 pressed again */
+							case 0b1001:
+								state = SUSPEND;
+							break; /* case 0b1001 */
+							default: break;
 						}
 					break;
 

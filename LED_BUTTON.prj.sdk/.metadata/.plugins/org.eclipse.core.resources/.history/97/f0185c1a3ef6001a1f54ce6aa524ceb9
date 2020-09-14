@@ -9,9 +9,6 @@
 /********************************************************************************************
 * VERSION HISTORY
 ********************************************************************************************
-*   v1.5 - 14 September 2020
-*       Optimized the finite state machine.
-*
 *   v1.4 - 13 September 2020
 *       Implemented the finite state machine described in ece3623-lab1-fsm.drawio
 *
@@ -70,10 +67,8 @@ int LEDOutputExample(void)
 	 *   COUNT2 = count by twos,
 	 *   COUNT4 = count by fours,
 	 *   SUSPEND = keep LEDs in last stage,
-	 *   COUNT_AFTER_SUSPEND = keep counting after changing from suspend
-	 *   SET = all LEDs on
-	 *   */
-	enum { INIT, COUNT1, COUNT2, COUNT4, SUSPEND, SET, COUNT_AFTER_SUSPEND } state;
+	 *   SET = all LEDs on */
+	enum { INIT, COUNT1, COUNT2, COUNT4, SUSPEND, SET } state;
 
 		//----------------------------------------------------
 		// INITIALIZE THE PERIPHERALS & SET DIRECTIONS OF GPIO
@@ -101,16 +96,15 @@ int LEDOutputExample(void)
 				/* Read input from the switches. */
 				btn = XGpio_DiscreteRead(&BTNInst, 1);
 
-				/* default logic */
-				/* hold the count, unless counting after suspend */
-				if (state != COUNT_AFTER_SUSPEND) {
-					inc = 0;
-				}
-
 				/* state logic */
 				switch (state) {
 					case INIT:
+						inc = 0;
 						led = 0b0000;
+						/* count by 1s if no buttons pressed */
+						if (btn == 0b0000) {
+							state = COUNT1;
+						}
 					break; /* case INIT */
 
 					case COUNT1:
@@ -133,6 +127,7 @@ int LEDOutputExample(void)
 					break; /* case COUNT1 */
 
 					case SUSPEND:
+						inc = 0;
 						switch (btn) {
 							/* count by 2s if button 3 is released */
 							case 0b0001:
@@ -147,23 +142,41 @@ int LEDOutputExample(void)
 					break; /* case SUSPEND */
 
 					case SET:
+						inc = 0;
 						led = 0b1111;
-					break; /* case SET */
+						/* count by 1s if no buttons pressed */
+						if (btn == 0b0000) {
+							state = COUNT1;
+						}
+					break;
 
 					case COUNT2:
 						inc = 2;
-						state = COUNT_AFTER_SUSPEND;
-					break; /* case COUNT2 */
+						switch (btn) {
+							/* suspend if button 3 pressed again */
+							case 0b1001:
+								state = SUSPEND;
+							break; /* case 0b1001 */
+							/* count by ones if button 0 also released */
+							case 0b0000:
+								state = COUNT1;
+							break;
+							default: break;
+						}
+					break;
 
 					case COUNT4:
 						inc = 4;
-						state = COUNT_AFTER_SUSPEND;
-					break; /* case COUNT4 */
-
-					case COUNT_AFTER_SUSPEND:
-						/* suspend if both buttons pressed again */
-						if (btn == 0b1001) {
-							state = SUSPEND;
+						switch (btn) {
+							/* suspend if button 0 pressed again */
+							case 0b1001:
+								state = SUSPEND;
+							break; /* case 0b1001 */
+							/* count by ones if button 3 also released */
+							case 0b0000:
+								state = COUNT1;
+							break;
+							default: break;
 						}
 					break;
 
@@ -172,10 +185,6 @@ int LEDOutputExample(void)
 
 				/* priority logic */
 				led += inc;
-				/* go back to COUNT1 if no buttons are pressed, *unless* state is SUSPEND */
-				if ((btn == 0b0000) && (state != SUSPEND)) {
-					state = COUNT1;
-				}
 
 				/* Wait a small amount of time so that the LED blinking is visible. */
 				for (Delay = 0; Delay < LED_DELAY; Delay++);
