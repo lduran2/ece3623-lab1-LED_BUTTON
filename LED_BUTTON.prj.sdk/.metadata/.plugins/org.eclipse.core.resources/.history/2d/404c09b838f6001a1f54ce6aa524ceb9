@@ -9,9 +9,6 @@
 /********************************************************************************************
 * VERSION HISTORY
 ********************************************************************************************
-*   v1.4 - 13 September 2020
-*       Implemented the finite state machine described in ece3623-lab1-fsm.drawio
-*
 *   v1.3 - 13 September 2020
 *       Integrated the button definitions and setup from interrupt_controller_tut_2B.c
 *
@@ -135,7 +132,7 @@ int LEDOutputExample(void)
 							break; /* case 0b0001 */
 							/* count by 4s if button 0 is released */
 							case 0b1000:
-								state = COUNT4;
+								inc = COUNT4;
 							break; /* case 0b1000 */
 							default: break;
 						} /* switch (btn) */

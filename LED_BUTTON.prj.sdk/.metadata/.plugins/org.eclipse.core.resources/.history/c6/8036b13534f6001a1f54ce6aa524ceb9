@@ -9,9 +9,6 @@
 /********************************************************************************************
 * VERSION HISTORY
 ********************************************************************************************
-*   v1.4 - 13 September 2020
-*       Implemented the finite state machine described in ece3623-lab1-fsm.drawio
-*
 *   v1.3 - 13 September 2020
 *       Integrated the button definitions and setup from interrupt_controller_tut_2B.c
 *
@@ -45,21 +42,20 @@
 #define BTNS_DEVICE_ID		XPAR_AXI_GPIO_0_DEVICE_ID
 #define GPIO_DEVICE_ID  XPAR_AXI_GPIO_1_DEVICE_ID	/* GPIO device that LEDs are connected to */
 #define LED 0b0000									/* Initial LED value - X00X */
-#define LED_DELAY 20000000							/* Software delay length (twice for visualization) */
+#define LED_DELAY 10000000							/* Software delay length */
 #define LED_CHANNEL 1								/* GPIO port for LEDs */
 #define printf xil_printf							/* smaller, optimised printf */
 
-XGpio BTNInst;									/* GPIO Device driver instance for buttons */
-XGpio LEDInst;									/* GPIO Device driver instance for LEDs */
+XGpio Gpio_BTN;									/* GPIO Device driver instance for buttons */
+XGpio Gpio_LED;									/* GPIO Device driver instance for LEDs */
 
 int LEDOutputExample(void)
 {
 
 	volatile int Delay;
 	int Status;
-	int inc = 0;	/* Increment for the LED counter */
+	int inc = 0;	/* increment for the LED counter */
 	int led = LED; /* Hold current LED value. Initialise to LED definition */
-	int btn;	/* Hold current button value */
 
 	/* the possible states of the finite state machine
 	 *   INIT = initial state, all LEDs off
@@ -74,7 +70,7 @@ int LEDOutputExample(void)
 		// INITIALIZE THE PERIPHERALS & SET DIRECTIONS OF GPIO
 		//----------------------------------------------------
 		/* GPIO driver initialisation */
-		Status = XGpio_Initialize(&LEDInst, GPIO_DEVICE_ID);
+		Status = XGpio_Initialize(&Gpio_LED, GPIO_DEVICE_ID);
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}
@@ -87,100 +83,24 @@ int LEDOutputExample(void)
 		XGpio_SetDataDirection(&BTNInst, 1, 0xFF);
 
 		/*Set the direction for the LEDs to output. */
-		XGpio_SetDataDirection(&LEDInst, LED_CHANNEL, 0x0);
+		XGpio_SetDataDirection(&Gpio_LED, LED_CHANNEL, 0x0);
 
 		/* Loop forever blinking the LED. */
 			while (1) {
 				/* Write output to the LEDs. */
-				XGpio_DiscreteWrite(&LEDInst, LED_CHANNEL, led);
-				/* Read input from the switches. */
-				btn = XGpio_DiscreteRead(&BTNInst, 1);
+				XGpio_DiscreteWrite(&Gpio_LED, LED_CHANNEL, led);
 
 				/* state logic */
 				switch (state) {
 					case INIT:
 						inc = 0;
 						led = 0b0000;
-						/* count by 1s if no buttons pressed */
-						if (btn == 0b0000) {
-							state = COUNT1;
-						}
-					break; /* case INIT */
-
+						if
+					break;
 					case COUNT1:
 						inc = 1;
-						switch (btn) {
-							/* initialize again if button 1 is pressed */
-							case 0b0010:
-								state = INIT;
-							break; /* case 0b0010 */
-							/* suspend if buttons 3 and 0 are pressed */
-							case 0b1001:
-								state = SUSPEND;
-							break; /* case 0b1001 */
-							/* set if button 2 is pressed */
-							case 0b0100:
-								state = SET;
-							break; /* case 0b1001 */
-							default: break;
-						} /* end switch (btn) */
-					break; /* case COUNT1 */
-
-					case SUSPEND:
-						inc = 0;
-						switch (btn) {
-							/* count by 2s if button 3 is released */
-							case 0b0001:
-								state = COUNT2;
-							break; /* case 0b0001 */
-							/* count by 4s if button 0 is released */
-							case 0b1000:
-								state = COUNT4;
-							break; /* case 0b1000 */
-							default: break;
-						} /* switch (btn) */
-					break; /* case SUSPEND */
-
-					case SET:
-						inc = 0;
-						led = 0b1111;
-						/* count by 1s if no buttons pressed */
-						if (btn == 0b0000) {
-							state = COUNT1;
-						}
-					break;
-
 					case COUNT2:
-						inc = 2;
-						switch (btn) {
-							/* suspend if button 3 pressed again */
-							case 0b1001:
-								state = SUSPEND;
-							break; /* case 0b1001 */
-							/* count by ones if button 0 also released */
-							case 0b0000:
-								state = COUNT1;
-							break;
-							default: break;
-						}
-					break;
 
-					case COUNT4:
-						inc = 4;
-						switch (btn) {
-							/* suspend if button 0 pressed again */
-							case 0b1001:
-								state = SUSPEND;
-							break; /* case 0b1001 */
-							/* count by ones if button 3 also released */
-							case 0b0000:
-								state = COUNT1;
-							break;
-							default: break;
-						}
-					break;
-
-					default: break;
 				}
 
 				/* priority logic */

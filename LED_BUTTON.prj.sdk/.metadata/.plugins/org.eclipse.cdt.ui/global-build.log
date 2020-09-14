@@ -230,3 +230,187 @@ arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o"
    XGpio_SetDataDirection(&LEDInst, 1, 0x00);
                            ^~~~~~~
 make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+22:31:46 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:76:30: error: 'BTNInst' undeclared (first use in this function)
+   Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+                              ^~~~~~~
+../src/LED_test_tut_1C.c:76:30: note: each undeclared identifier is reported only once for each function it appears in
+../src/LED_test_tut_1C.c:79:27: error: 'LEDInst' undeclared (first use in this function)
+   XGpio_SetDataDirection(&LEDInst, 1, 0x00);
+                           ^~~~~~~
+../src/LED_test_tut_1C.c:65:54: warning: unused variable 'state' [-Wunused-variable]
+  enum { INIT, COUNT1, COUNT2, COUNT4, SUSPEND, SET } state;
+                                                      ^~~~~
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+22:43:25 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:78:30: error: 'BTNInst' undeclared (first use in this function)
+   Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+                              ^~~~~~~
+../src/LED_test_tut_1C.c:78:30: note: each undeclared identifier is reported only once for each function it appears in
+../src/LED_test_tut_1C.c:81:27: error: 'LEDInst' undeclared (first use in this function)
+   XGpio_SetDataDirection(&LEDInst, 1, 0x00);
+                           ^~~~~~~
+../src/LED_test_tut_1C.c:99:6: error: expected '(' before 'break'
+      break;
+      ^~~~~
+      (
+../src/LED_test_tut_1C.c:102:11: error: label at end of compound statement
+      case COUNT2:
+           ^~~~~~
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'COUNT4' not handled in switch [-Wswitch]
+     switch (state) {
+     ^~~~~~
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'SUSPEND' not handled in switch [-Wswitch]
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'SET' not handled in switch [-Wswitch]
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+22:44:29 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:81:27: error: 'LEDInst' undeclared (first use in this function); did you mean 'BTNInst'?
+   XGpio_SetDataDirection(&LEDInst, 1, 0x00);
+                           ^~~~~~~
+                           BTNInst
+../src/LED_test_tut_1C.c:81:27: note: each undeclared identifier is reported only once for each function it appears in
+../src/LED_test_tut_1C.c:99:6: error: expected '(' before 'break'
+      break;
+      ^~~~~
+      (
+../src/LED_test_tut_1C.c:102:11: error: label at end of compound statement
+      case COUNT2:
+           ^~~~~~
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'COUNT4' not handled in switch [-Wswitch]
+     switch (state) {
+     ^~~~~~
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'SUSPEND' not handled in switch [-Wswitch]
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'SET' not handled in switch [-Wswitch]
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+22:44:39 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:99:6: error: expected '(' before 'break'
+      break;
+      ^~~~~
+      (
+../src/LED_test_tut_1C.c:102:11: error: label at end of compound statement
+      case COUNT2:
+           ^~~~~~
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'COUNT4' not handled in switch [-Wswitch]
+     switch (state) {
+     ^~~~~~
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'SUSPEND' not handled in switch [-Wswitch]
+../src/LED_test_tut_1C.c:94:5: warning: enumeration value 'SET' not handled in switch [-Wswitch]
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+23:11:54 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:119:8: error: duplicate case value
+        case 0b1001:
+        ^~~~
+../src/LED_test_tut_1C.c:115:8: note: previously used here
+        case 0b1001:
+        ^~~~
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+23:12:22 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+'Finished building: ../src/LED_test_tut_1C.c'
+' '
+'Building target: LED_BUTTON.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../LED_BUTTON_bsp/ps7_cortexa9_0/lib -o "LED_BUTTON.elf"  ./src/LED_test_tut_1C.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: LED_BUTTON.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size LED_BUTTON.elf  |tee "LED_BUTTON.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31272	   1576	  23304	  56152	   db58	LED_BUTTON.elf
+'Finished building: LED_BUTTON.elf.size'
+' '
+23:13:47 **** Incremental Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+23:15:53 **** Incremental Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+23:16:45 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+'Finished building: ../src/LED_test_tut_1C.c'
+' '
+'Building target: LED_BUTTON.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../LED_BUTTON_bsp/ps7_cortexa9_0/lib -o "LED_BUTTON.elf"  ./src/LED_test_tut_1C.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: LED_BUTTON.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size LED_BUTTON.elf  |tee "LED_BUTTON.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31272	   1576	  23304	  56152	   db58	LED_BUTTON.elf
+'Finished building: LED_BUTTON.elf.size'
+' '
+23:17:15 **** Incremental Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+23:21:34 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+'Finished building: ../src/LED_test_tut_1C.c'
+' '
+'Building target: LED_BUTTON.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../LED_BUTTON_bsp/ps7_cortexa9_0/lib -o "LED_BUTTON.elf"  ./src/LED_test_tut_1C.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: LED_BUTTON.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size LED_BUTTON.elf  |tee "LED_BUTTON.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31272	   1576	  23304	  56152	   db58	LED_BUTTON.elf
+'Finished building: LED_BUTTON.elf.size'
+' '
