@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;zynq_led_button_system_wrapper_hw_platform_0/zynq_interrupt_system_wrapper.bit&apos; to &apos;zynq_led_button_system_wrapper.bit&apos;" description="Rename resource &apos;zynq_interrupt_system_wrapper.bit&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="zynq_interrupt_system_wrapper.bit" name="zynq_led_button_system_wrapper.bit" stamp="1600048624536" updateReferences="true"/>
+</session>
