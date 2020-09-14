@@ -10,7 +10,7 @@
 * VERSION HISTORY
 ********************************************************************************************
 *   v1.3 - 13 September 2020
-*       Integrated the button definitions and setup from interrupt_controller_tut_2B.c
+*       Modified to use GPIO_1 for the LEDs
 *
 * 	v1.2 - 13 February 2015
 * 		Modified for Zybo Development Board ~ DN
@@ -39,7 +39,6 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define BTNS_DEVICE_ID		XPAR_AXI_GPIO_0_DEVICE_ID
 #define GPIO_DEVICE_ID  XPAR_AXI_GPIO_1_DEVICE_ID	/* GPIO device that LEDs are connected to */
 #define LED 0x9										/* Initial LED value - X00X */
 #define LED_DELAY 10000000							/* Software delay length */
@@ -55,21 +54,11 @@ int LEDOutputExample(void)
 	int Status;
 	int led = LED; /* Hold current LED value. Initialise to LED definition */
 
-		//----------------------------------------------------
-		// INITIALIZE THE PERIPHERALS & SET DIRECTIONS OF GPIO
-		//----------------------------------------------------
 		/* GPIO driver initialisation */
 		Status = XGpio_Initialize(&Gpio, GPIO_DEVICE_ID);
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}
-		// Initialise Push Buttons
-		Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
-		if(Status != XST_SUCCESS) return XST_FAILURE;
-		// Set LEDs direction to outputs
-		XGpio_SetDataDirection(&LEDInst, 1, 0x00);
-		// Set all buttons direction to inputs
-		XGpio_SetDataDirection(&BTNInst, 1, 0xFF);
 
 		/*Set the direction for the LEDs to output. */
 		XGpio_SetDataDirection(&Gpio, LED_CHANNEL, 0x0);

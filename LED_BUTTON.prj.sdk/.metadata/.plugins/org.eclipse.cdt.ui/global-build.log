@@ -162,3 +162,71 @@ arm-none-eabi-size LED_BUTTON.elf  |tee "LED_BUTTON.elf.size"
   30696	   1576	  23288	  55560	   d908	LED_BUTTON.elf
 'Finished building: LED_BUTTON.elf.size'
 ' '
+22:13:49 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+'Finished building: ../src/LED_test_tut_1C.c'
+' '
+'Building target: LED_BUTTON.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../LED_BUTTON_bsp/ps7_cortexa9_0/lib -o "LED_BUTTON.elf"  ./src/LED_test_tut_1C.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: LED_BUTTON.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size LED_BUTTON.elf  |tee "LED_BUTTON.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30696	   1576	  23288	  55560	   d908	LED_BUTTON.elf
+'Finished building: LED_BUTTON.elf.size'
+' '
+22:22:32 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:67:30: error: 'BTNInst' undeclared (first use in this function)
+   Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+                              ^~~~~~~
+../src/LED_test_tut_1C.c:67:30: note: each undeclared identifier is reported only once for each function it appears in
+../src/LED_test_tut_1C.c:70:27: error: 'LEDInst' undeclared (first use in this function)
+   XGpio_SetDataDirection(&LEDInst, 1, 0x00);
+                           ^~~~~~~
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+22:23:33 **** Incremental Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:67:30: error: 'BTNInst' undeclared (first use in this function)
+   Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+                              ^~~~~~~
+../src/LED_test_tut_1C.c:67:30: note: each undeclared identifier is reported only once for each function it appears in
+../src/LED_test_tut_1C.c:70:27: error: 'LEDInst' undeclared (first use in this function)
+   XGpio_SetDataDirection(&LEDInst, 1, 0x00);
+                           ^~~~~~~
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
+22:27:29 **** Auto Build of configuration Debug for project LED_BUTTON ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/LED_test_tut_1C.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_test_tut_1C.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../LED_BUTTON_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/LED_test_tut_1C.d" -MT"src/LED_test_tut_1C.o" -o "src/LED_test_tut_1C.o" "../src/LED_test_tut_1C.c"
+../src/LED_test_tut_1C.c: In function 'LEDOutputExample':
+../src/LED_test_tut_1C.c:67:30: error: 'BTNInst' undeclared (first use in this function)
+   Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+                              ^~~~~~~
+../src/LED_test_tut_1C.c:67:30: note: each undeclared identifier is reported only once for each function it appears in
+../src/LED_test_tut_1C.c:70:27: error: 'LEDInst' undeclared (first use in this function)
+   XGpio_SetDataDirection(&LEDInst, 1, 0x00);
+                           ^~~~~~~
+make: *** [src/subdir.mk:23: src/LED_test_tut_1C.o] Error 1
