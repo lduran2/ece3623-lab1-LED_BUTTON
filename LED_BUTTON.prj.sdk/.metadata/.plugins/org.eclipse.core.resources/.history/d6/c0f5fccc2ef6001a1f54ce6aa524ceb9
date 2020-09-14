@@ -36,7 +36,7 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define GPIO_DEVICE_ID  XPAR_AXI_GPIO_1_DEVICE_ID	/* GPIO device that LEDs are connected to */
+#define GPIO_DEVICE_ID  XPAR_AXI_GPIO_0_DEVICE_ID	/* GPIO device that LEDs are connected to */
 #define LED 0x9										/* Initial LED value - X00X */
 #define LED_DELAY 10000000							/* Software delay length */
 #define LED_CHANNEL 1								/* GPIO port for LEDs */
